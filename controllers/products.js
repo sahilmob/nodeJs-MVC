@@ -16,7 +16,7 @@ exports.postAddProduct = (req, res, next) => {
   res.redirect('/');
 }
 
-exports.getProducts = (req, res, next) => {
+exports.getIndex = (req, res, next) => {
   Product.fetchAll((products) => {
     res.render('shop/product-list', {
       prods: products,
@@ -27,5 +27,28 @@ exports.getProducts = (req, res, next) => {
       productCSS: true
     });
   });
+}
 
+exports.getProducts = (req, res, next) => {
+  Product.fetchAll((products) => {
+    res.render('shop/product-list', {
+      prods: products,
+      pageTitle: 'Products',
+      path: '/products',
+    });
+  });
+}
+
+exports.getProducts = (req, res, next) => {
+  res.render('admin/products', {
+    path: '/admin/products',
+    pageTitle: 'Admin Products'
+  })
+}
+
+exports.getCart = (req, res, next) => {
+  res.render('shop/cart', {
+    path: 'cart',
+    pageTitle: 'Cart'
+  })
 }
